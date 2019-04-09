@@ -11,6 +11,12 @@
 <li>
 <p>{{name}}</p>
 <img src="{{imageUrl}}"/>
+
+<form action="/add-collection" method="POST">
+    <input type="hidden" name="multiverseid" value="{{multiverseid}}" />
+    <button type="submit">Add to Collection</button>
+</form>
+
 </li>
 {{/cards}}
 </ul>

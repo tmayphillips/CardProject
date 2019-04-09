@@ -26,9 +26,11 @@
     "express-mustache": "^1.0.4",
     "mtgsdk": "^0.4.2",
     "mustache-express": "^1.2.8",
+    "pg": "^7.9.0",
     "ramda": "^0.21.0",
     "request": "^2.81.0",
-    "request-promise": "^4.2.1"
+    "request-promise": "^4.2.1",
+    "sequelize": "^5.2.14"
   },
   "directories": {
     "lib": "lib"

@@ -3,7 +3,7 @@ const mustacheExpress = require('mustache-express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const app = express()
-// const models = require('./models')
+const models = require('./models')
 const mtg = require('mtgsdk')
 
 app.engine('mustache',mustacheExpress())
@@ -17,20 +17,40 @@ app.set('view engine','mustache')
 // })
 
 
+app.post('/add-collection',(req,res) => {
+    //Get the input variables from the search page
+    let multiverseid = req.body.multiverseid
+
+    let collection = models.Collection.build({
+        multiverseid: multiverseid,
+      })
+    
+    collection.save().then((savedCard) => {
+      console.log(savedCard)
+    })
+    .then(() => {
+      console.log("Ay pretty good")
+    }).catch(error => console.log(error))
+})
 
 app.post('/view-card',(req,res) => {
+
+
+    //Search by card name
+    //Turn input text from search bar into a variable
     let cardName = req.body.cardName
+    mtg.card.where({ name: `${cardName}`})
+    .then(cards => {
+        res.render('view-card',{cards: cards})
+        console.log(cards)
+    })
+
     // mtg.card.all({ name: 'Squee', pageSize: 1 })
     // .on('data', card => {
     //     console.log(card)
     // // res.render('view-card',{card: card})
     // console.log(card.name)
     // })
-    mtg.card.where({ name: `${cardName}`})
-    .then(cards => {
-        res.render('view-card',{cards: cards})
-        console.log(cards)
-    })
 
     // mtg.card.where({ supertypes: 'legendary', subtypes: 'goblin' })
     // .then(cards => {
@@ -44,6 +64,10 @@ app.post('/view-card',(req,res) => {
     // console.log(result.card.name) // "Black Lotus"
     // })
 })
+
+
+
+
 app.get('/view-card',(req,res) => {
     res.render('view-card')
 })
