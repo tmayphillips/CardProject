@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
-
     <title>Mint Condition</title>
   </head>
   <body>
@@ -38,7 +37,7 @@
               <a class="dropdown-item" href="login">Log In</a>
               <a class="dropdown-item" href="/">Log Out</a>
               <a class="dropdown-item" href="register">Register</a>
-              <a class="dropdown-item" href="profile">View Profile</a>
+              <a class="dropdown-item" href='profile'>View Profile</a>
             </div>
           </li>
         </ul>
@@ -51,26 +50,54 @@
 <!-- end of navbar -->
 
 
-<!-- log in/register
-<div>
-  <form action='/login' method='POST'>
-  <input type='text' name='username' placeholder='username'/>
-  <input type='password' name='password' placeholder='password'/>
-  <button type='submit'>Submit</button>
-  </form> -->
+<div class="row">
+  <div id="profile" class="col-md-3">Profile</div>
+  <div id="search" class="col-md-6">
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="/search">Search</a></button>
+    </form>
+  </div>
+</div>
+
+
+<!-- Cards -->
+{{#cards}}
+<div class="row">
+  <form action='/cards' method='POST'>
+    <input type='hidden' name='cardid' value='{{multiverseid}}'/>
+  </form>
+  <div class="card col-md-4" style="width: 18rem;">
+  <img class="card-img-top" src='{{imageUrl}}' alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{name}}</h5>
+    <div class="row">
+      <a href="#" class="btn btn-primary">Add to collection</a>
+      <a href="#" class="btn btn-primary">Add to wishlist</a>
+    </div>
+  </div>
+</div>
+{{/cards}}
 
 
 
-
-
-
-
-
-
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link active" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
 
 </div>
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- Pagination script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
