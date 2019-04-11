@@ -55,7 +55,7 @@ app.post('/login', (req,res) => {
   })
   .then(function(user) {
     if (user == null) {
-      console.log("user does not fucking exist")
+      console.log("user does not exist")
       res.redirect('/login')
     }
     else {
