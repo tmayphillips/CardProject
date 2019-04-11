@@ -8,6 +8,9 @@ const mtg = require('mtgsdk')
 const sequelize = require('sequelize')
 const pgp = require('pg-promise')()
 const sequelizePaginate = require('sequelize-paginate')
+const paginate = require('express-paginate')
+var ejs = require('ejs')
+var mongoose = require('mongoose')
 const cn = {
     host: 'isilo.db.elephantsql.com',
     port: 5431,
@@ -17,8 +20,11 @@ const cn = {
 };
 
 app.use(express.static('public'))
+app.use('/js',express.static('js'))
 app.engine('mustache',mustacheExpress())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(paginate.middleware(10, 50));
 app.set('views','./views')
 app.set('view engine','mustache')
 
@@ -40,92 +46,51 @@ app.get('/wish-list',(req,res) => {
 app.get('/profile',(req,res) => {
   res.render('profile')
 })
-/*
-app.get('/cards',(req,res) => {
-  res.render('cards')
-}) */
 
 app.get('/search-cards',(req,res) => {
   res.render('search-cards')
 })
 
 app.get('/cards',(req,res) => {
-  models.Collection.findAll().then((cards) => {
-    res.render('cards', {cards: cards})
+  // models.Collection.findAll().then((cards) => {
+  //   res.render('cards', {cards: cards})
+  // })
+    res.render('cards')
+})
+
+app.get('/view-card/', (req,res,next) => {
+  let searchTerm = req.query.search
+
+  mtg.card.where({
+    name: `${searchTerm}`
+  })
+  .then(cards => {
+    res.status(200).json({'cards': cards})
+  }).catch(err => next(err))
+})
+
+app.post('/add-collection',(req,res) => {
+  let card = {
+    multiverseid: req.body.multiverseid,
+    user: currentUser
+  }
+
+  models.Collection.create(card).then(function() {
+    res.status(200).send()
   })
 })
 
-// app.post('/view-card',(req,res) => {
-//     let cardid = req.body.cardid
-//
-//     mtg.card.where({ name: `${cardid}`})
-//     .then(cards => {
-//       console.log(cards);
-//         res.render('view-card',{cards: cards})
-//     })
-// })
+app.post('/add-wishlist',(req,res) => {
+  let card = {
+    multiverseid: req.body.multiverseid,
+    user: currentUser
+  }
 
-app.get('/cards/:page', (req, res) => {
-  let limit = 5;   // number of records per page
-  let offset = 0;
-  models.Collection.findAndCountAll()
-  .then((data) => {
-    let page = req.params.page;      // page number
-    let pages = Math.ceil(data.count / limit);
-		offset = limit * (page - 1);
-    models.Collection.findAll({
-      attributes: ['multiverseid'],
-      limit: limit,
-      offset: offset,
-      $sort: { multiverseid: 1 }
-    })
-    .then((cards) => {
-      res.status(200).json({'result': cards, 'count': data.count, 'pages': pages});
-    });
+  models.Wishlist.create(card).then(function() {
+    res.status(200).send()
   })
-  .catch(function (error) {
-		res.status(500).send('Internal Server Error');
-	});
-});
-
-app.post('/view-card/:page',(req,res) => {
-    let cardid = req.body.cardid
-
-    mtg.card.where({ name: `${cardid}`})
-    .then((data) => {
-      let page = req.params.page;      // page number
-      let pages = Math.ceil(data.count / limit);
-  		offset = limit * (page - 1);
-      mtg.card.where({name: `${cardid}`,
-        limit: limit,
-        offset: offset
-      })
-      .then(cards => {
-          console.log(cards);
-          res.render('view-card/:page',{cards: cards})
-      })
-    })
-    .catch(function (error) {
-  		res.status(500).send("AHHH");
-  	});
-  });
-
-
-
-
-// app.post('/cards',(req,res) => {
-//     let cardid = req.body.cardid
-//
-//     mtg.card.where({ multiverseid: `${cardid}`})
-//     .then(cards => {
-//       console.log(cards);
-//         res.render('view-card',{cards: cards})
-//     })
-// })
-
-app.get('/view-card',(req,res) => {
-    res.render('view-card')
 })
+
 
 app.listen(3000,function(){
     console.log("server running")

@@ -46,6 +46,7 @@ app.get('/cards',(req,res) => {
 }) */
 
 app.get('/search-cards',(req,res) => {
+  console.log('SEARCH CARDS')
   res.render('search-cards')
 })
 
