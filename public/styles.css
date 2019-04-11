@@ -20,3 +20,27 @@ h2 {
 .custom-file {
   margin: 25 15 0 15;
 }
+/* profile page css*/
+img {
+  height: 200px;
+  width: 200px;
+}
+#full-profile {
+  border-bottom: 1px black solid;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+#user-info {
+  display: flex;
+  flex-direction: column;
+}
+#pic-info {
+  display: flex;
+  justify-content: center;
+}
+#profile-page-img {
+  height: 350px;
+  width: 350px;
+}
+/* end of profile page css */

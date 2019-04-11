@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel='stylesheet' href='styles.css'></link>
+    <link rel='stylesheet' href='/styles.css'></link>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
@@ -49,16 +49,35 @@
     </nav>
 <!-- end of navbar -->
 
-<h2>Profile</h2>
 <!-- profile -->
+<div id='full-profile'>
 {{#user}}
-<ul>
-  <li>
-  Hello {{username}}!
-  </li>
-  {{/user}}
-</ul>
+<h2>{{username}}</h2>
 
+<div id='pic-info'>
+<div id='profile-pic'>
+<img id='profile-page-img' src='/{{profileimg}}'/>
+</div>
+<div id='user-info'>
+<h6>Location</h6>
+<p>{{location}}</p>
+<h6>Favorite Deck</h6>
+<p>{{favedeck}}</p>
+<h6>Play Style</h6>
+<p>{{playstyle}}</p>
+<h6>Play Time</h6>
+<p>{{playtime}}</p>
+<h6>Total Cards</h6>
+<p>{{numberofcards}}</p>
+<form action='/edit-profile' method='POST'><button type='submit'>Edit Profile</button></form>
+</div>
+</div>
+<div id='about-me'>
+<p>{{aboutme}}</p>
+</div>
+{{/user}}
+</div>
+<!-- end of profile -->
 
 
 

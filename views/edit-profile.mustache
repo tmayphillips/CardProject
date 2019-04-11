@@ -37,7 +37,7 @@
               <a class="dropdown-item" href="login">Log In</a>
               <a class="dropdown-item" href="/">Log Out</a>
               <a class="dropdown-item" href="register">Register</a>
-              <a class="dropdown-item" href='profile'>View Profile</a>
+              <a class="dropdown-item" href="profile">View Profile</a>
             </div>
           </li>
         </ul>
@@ -49,30 +49,39 @@
     </nav>
 <!-- end of navbar -->
 
-<h2>Wish List</h2>
-<!-- wish list -->
-
 <!-- profile pane -->
 {{#user}}
-<div class="card" style="width: 18rem;">
-  <img src="{{profileimg}}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{username}}</h5>
-    <p class="card-text"></p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{location}}</li>
-    <li class="list-group-item">{{favedeck}}</li>
-    <li class="list-group-item">{{playstyle}}</li>
-    <li class="list-group-item">{{playtime}}</li>
-    <li class="list-group-item">{{numberofcards}}</li>
-  </ul>
-  <div class="card-body">
-    <a href="profile" class="card-link">Profile</a>
-  </div>
+<div id='full-profile'>
+<h2>{{username}}</h2>
+<div id='pic-info'>
+<div id='profile-pic'>
+<img id='profile-page-img' src='{{profileimg}}'/>
 </div>
+<div id='user-info'>
+<h6>Location</h6>
+<form action='/update-profile' method='POST'>
+<input type='text' name='location' value='{{location}}'/>
+<h6>Favorite Deck</h6>
+<input type='text' name='faveDeck' value='{{favedeck}}'/>
+<h6>Play Style</h6>
+<input type='text' name='playStyle' value='{{playstyle}}'/>
+<h6>Play Time</h6>
+<input type='text' name='playTime' value='{{playtime}}'/>
+<button type='submit'>Update</button>
+<!-- <h6>Total Cards</h6>
+<input type='text' name='totalCards' value='{{totalcards}}'/> -->
+</div>
+</div>
+<div id='about-me'>
+<!--<input type='text' name='about-me' value='{{aboutme}}'/>-->
+</form>
 {{/user}}
+</div>
+</div>
 <!-- end of profile pane -->
+
+
+
 
 
 
