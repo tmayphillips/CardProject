@@ -8,7 +8,6 @@
     <link rel='stylesheet' href='styles.css'></link>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-
     <title>Mint Condition</title>
   </head>
   <body>
@@ -53,18 +52,26 @@
 <!-- wish list -->
 
 <!-- profile pane -->
+{{#user}}
 <div class="card" style="width: 18rem;">
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNQMkHx_zoFuM1MFkdkxu93YTwoUvm0v6RZGsG1IeYlVOItXvzqQ" class="card-img-top" alt="...">
+  <img src="{{profileimg}}" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">Tim Goens</h5>
-    <p class="card-text">I am the world's best magic player!  Beware!</p>
-    <a href="profile" class="btn btn-primary">View Profile</a>
+    <h5 class="card-title">{{username}}</h5>
+    <p class="card-text"></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{location}}</li>
+    <li class="list-group-item">{{favedeck}}</li>
+    <li class="list-group-item">{{playstyle}}</li>
+    <li class="list-group-item">{{playtime}}</li>
+    <li class="list-group-item">{{numberofcards}}</li>
+  </ul>
+  <div class="card-body">
+    <a href="profile" class="card-link">Profile</a>
   </div>
 </div>
-
-
-
-
+{{/user}}
+<!-- end of profile pane -->
 
 </div>
     <!-- Optional JavaScript -->
