@@ -1,0 +1,15 @@
+//- cards.pug
+
+h1 Cards
+
+//- this will simply generate a link to sort by name
+//- note how we only have to pass the querystring param
+//- that we want to modify here, not the entire querystring
+a(href=paginate.href({ sort: 'name' })) Sort by name
+
+/
+ul
+  each card in Cards
+    li= card.name
+
+include _paginate
