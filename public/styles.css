@@ -1,0 +1,22 @@
+#header {
+  text-align: center;
+}
+.nav-style {
+  background-color: grey;
+  color: black;
+}
+form {
+  margin: 0 50 0 50;
+}
+
+.navbar {
+  margin: 0 15 0 15;
+}
+
+h2 {
+  text-align: center;
+}
+
+.custom-file {
+  margin: 25 15 0 15;
+}

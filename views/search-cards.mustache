@@ -6,12 +6,21 @@
 <h1>Search Cards</h1>
 
 
-    <form action='/view-card' method="POST">
+    <form action='/view-card-name' method="POST">
         <textarea name="cardName"></textarea>
-        <button type="submit">Save</button>
+        <button type="submit">Search</button>
     </form>
 
-
+    <form action='/view-card-advanced' method="POST">
+        <textarea name="cardName" placeholder="Card Name, e.g. 'Squee'"></textarea>
+        <textarea name="cardColor" placeholder="Card color: Red, Blue, Black, Green, White, Colorless"></textarea>
+        <textarea name="cardSupertype" placeholder="Supertype"></textarea>
+        <textarea name="cardCMC" placeholder="Total manacost (Must be number)"></textarea>
+        <textarea name="cardRarity" placeholder="Rarity (Common, Uncommon, Rare, Mythic Rare, Special, Basic Land)"></textarea>
+        <textarea name="cardArtist" placeholder="Artist"></textarea>
+        <textarea name="cardId" placeholder="Multiverse ID"></textarea>
+        <button type="submit">Search</button>
+    </form>
 
 
 </body>
