@@ -49,7 +49,7 @@ function changePage(page) {
 
   listingTable = document.getElementById('listingTable')
   listingTable.innerHTML += `
-    <li><img src = '${objJson[0].cards[i].imageUrl}' alt='${objJson[0].cards[i].name}' /></a>
+    <li><img src = '${objJson[0].cards[i].imageUrl}' onerror="this.onerror=null;this.src='https://i.imgur.com/9nWVEqy.jpg'" /></a>
     <form action='/add-collection' method="POST">
     <input type="hidden" name="multiverseid" value='${objJson[0].cards[i].multiverseid}' />
     <input type='hidden' name='userId' value='${objJson[0].userId}' />
