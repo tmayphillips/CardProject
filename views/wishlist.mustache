@@ -11,7 +11,7 @@
 
     <title>Mint Condition</title>
   </head>
-  <body>
+  <body id='background'>
     <div id='main'>
     <h1 id='header'>Mint Condition</h1>
 
@@ -34,11 +34,9 @@
               My Account
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="login">Log In</a>
               <form action="/logout" method="GET">
                 <button class="dropdown-item" type="submit">Log Out</button>
               </form>
-              <a class="dropdown-item" href="register">Register</a>
               <a class="dropdown-item" href='profile'>View Profile</a>
             </div>
           </li>
@@ -62,24 +60,20 @@
 <a href="javascript:nextPage()" id="btn_next">Next</a>
 <!-- profile pane -->
 {{#user}}
-<div class="card" style="width: 18rem;">
-  <img src="{{profileimg}}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{username}}</h5>
-    <p class="card-text"></p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{location}}</li>
-    <li class="list-group-item">{{favedeck}}</li>
-    <li class="list-group-item">{{playstyle}}</li>
-    <li class="list-group-item">{{playtime}}</li>
-    <li class="list-group-item">{{numberofcards}}</li>
-  </ul>
-  <div class="card-body">
-    <a href="profile" class="card-link">Profile</a>
-  </div>
+<div id='card-frame'>
+<img id='profile-frame-img' src='profile-frame.png'/>
+<div id='user-name-frame'><h6 id='user-name'>{{username}}</h6></div>
+<img id='profile-img' src='{{profileimg}}'/>
+<div id='play-style-frame'><h6 id='play-style'>{{playstyle}}</h6></div>
+<div id='profile-info'>
+<p>{{location}}</p>
+<p>{{favedeck}}</p>
+<p>{{playtime}}</p>
 </div>
+<div id='total-cards'><p>{{numberofcards}}</p></div>
 {{/user}}
+</div>
+<!-- end of profile -->
 
 
 

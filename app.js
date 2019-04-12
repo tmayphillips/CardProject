@@ -397,6 +397,24 @@ app.post('/view-card-advanced',(req,res) => {
   })
 })
 
+// app.get('/view-card-advanced/', (req,res,next) => {
+//   let cardName = req.query.cardName
+//   let cardColor = req.query.cardColor
+//   let cardSupertype = req.query.cardSupertype
+//   let cardCMC = req.query.cardCMC
+//   let cardRarity = req.query.cardRarity
+//   let cardArtist = req.query.cardArtist
+//   let cardId = req.query.cardId
+//   let cardSubtype = req.query.Subtype
+//   //Use mtg's api interface to match cardName to database
+//   mtg.card.where({ name: `${cardName}`, supertypes: `${cardSupertype}`, colors: `${cardColor}`, cmc: `${cardCMC}`, rarity: `${cardRarity}`, artist: `${cardArtist}`, multiverseid: `${cardId}`})
+//   //create promise holding 'cards', whose value is what was returned by mtg.card.where
+//   .then(cards => {
+//     //render view-card page with cards in 'cards', and the session user id in userid
+//     res.status(200).json({'cards': result, 'userId': req.session.username.id})
+//   })
+// })
+
 app.listen(3000,function(){
     console.log("server running")
   })
