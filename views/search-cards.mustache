@@ -34,7 +34,9 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="login">Log In</a>
-              <a class="dropdown-item" href="/">Log Out</a>
+              <form action="/logout" method="GET">
+                <button class="dropdown-item" type="submit">Log Out</button>
+              </form>
               <a class="dropdown-item" href="register">Register</a>
               <a class="dropdown-item" href='profile'>View Profile</a>
             </div>

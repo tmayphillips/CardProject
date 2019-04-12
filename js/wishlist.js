@@ -42,7 +42,7 @@ function changePage(page) {
   for (var i = (page-1) * records_per_page; i < (page * records_per_page) && i < objJson[0].cards.length; i++) {
     wishlistTable = document.getElementById('wishlistTable')
     wishlistTable.innerHTML += `
-      <li><img src = '${objJson[0].cards[i][0].imageUrl}' alt='${objJson[0].cards[i][0].name}' /></a>
+      <li><img src = '${objJson[0].cards[i][0].imageUrl}' onerror="this.onerror=null;this.src='https://i.imgur.com/9nWVEqy.jpg'" /></a>
       </li><br>`
     }
 
