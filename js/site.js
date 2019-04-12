@@ -19,7 +19,7 @@ searchButton.addEventListener('click',() => {
       objJson.push(myJson)
     })
     // window.location.href('http://localhost:3000/search-cards')
-  setTimeout(function(){changePage(1)}, 1000);
+  setTimeout(function(){changePage(1)}, 3000);
 })
 
 function prevPage() {
