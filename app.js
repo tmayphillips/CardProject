@@ -182,7 +182,10 @@ app.get('/register',(req,res) => {
 })
 
 app.get('/search-cards',(req,res) => {
-    console.log(req.session)
+  if (req.session.username == undefined) {
+    res.render('index')
+  }
+  else {
     models.Users.findOne({
         where: {
             username: req.session.username.username,
@@ -190,6 +193,7 @@ app.get('/search-cards',(req,res) => {
     }).then(user => {
     res.render('search-cards', {user: user})
     })
+  }
 })
 
 app.get('/view-card/', (req,res,next) => {
@@ -223,9 +227,31 @@ app.post('/add-collection',(req,res) => {
     }).catch(error => console.log(error))
 })
 
+app.post('/add-wishlist',(req,res) => {
+    //Get the input variables from the search page
+    let multiverseid = req.body.multiverseid
+    let userId = req.body.userId
+    //create variable that holds an object made of multiverseid and userId, in format of Collection class
+    let wishlist = models.Wishlist.build({
+        multiverseid: multiverseid,
+        userId: userId
+      })
+    //save the new variable to the collection table
+    wishlist.save().then((savedCard) => {
+      console.log(savedCard)
+    })
+    .then(() => {
+      //success message
+      console.log("Ay pretty good")
+    }).catch(error => console.log(error))
+})
 //***********DISPLAY CARDS IN USER'S COLLECTION***********//
 
 app.get('/view-collection',(req,res) => {
+  if (req.session.username == undefined) {
+    res.render('index')
+  }
+  else {
   let promises = []
   models.Collection.findAll({
     where: {
@@ -241,11 +267,83 @@ app.get('/view-collection',(req,res) => {
     Promise.all(promises)
     .then(result => {
     res.status(200).json({'cards': result, 'userId': req.session.username.id})
+
 })
 })
+}
 })
 
+app.get('/search-collection',(req,res) => {
+  if (req.session.username == undefined) {
+    res.render('index')
+  }
+  else {
+    let searchTerm = req.query.search
+
+    mtg.card.where({
+      name: `${searchTerm}`
+    })
+  let promises = []
+  models.Collection.findAll({
+    where: {
+      userId: req.session.username.id
+    }
+  }).then(cardCollection => {
+    cardCollection.forEach((col) => {
+      let promise = mtg.card.where({
+        multiverseid: col.dataValues.multiverseid,
+        name: `${searchTerm}`
+      })
+      promises.push(promise)
+    })
+    Promise.all(promises)
+    .then(result => {
+    res.status(200).json({'cards': result, 'userId': req.session.username.id})
+
+})
+})
+}
+})
+
+app.get('/search-wishlist',(req,res) => {
+  if (req.session.username == undefined) {
+    res.render('index')
+  }
+  else {
+    let searchTerm = req.query.search
+
+    mtg.card.where({
+      name: `${searchTerm}`
+    })
+  let promises = []
+  models.Wishlist.findAll({
+    where: {
+      userId: req.session.username.id
+    }
+  }).then(cardWishlist => {
+    cardWishlist.forEach((col) => {
+      let promise = mtg.card.where({
+        multiverseid: col.dataValues.multiverseid,
+        name: `${searchTerm}`
+      })
+      promises.push(promise)
+    })
+    Promise.all(promises)
+    .then(result => {
+    res.status(200).json({'cards': result, 'userId': req.session.username.id})
+
+})
+})
+}
+})
+
+
 app.get('/view-wishlist',(req,res) => {
+  if (req.session.username == undefined) {
+    res.render('index')
+  }
+  else {
+
   let promises = []
   models.Wishlist.findAll({
     where: {
@@ -263,6 +361,7 @@ app.get('/view-wishlist',(req,res) => {
     res.status(200).json({'cards': result, 'userId': req.session.username.id})
 })
 })
+}
 })
 
 
