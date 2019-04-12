@@ -51,11 +51,15 @@ function changePage(page) {
   listingTable.innerHTML += `
     <li><img src = '${objJson[0].cards[i].imageUrl}' alt='${objJson[0].cards[i].name}' /></a>
     <form action='/add-collection' method="POST">
-      <button type="submit">Add to Collection</button>
-    </form>
-    <form action='/add-wishlist' method="POST">
-      <button type="submit">Add to Wish List</button>
-    </form></li><br>`
+    <input type="hidden" name="multiverseid" value='${objJson[0].cards[i].multiverseid}' />
+    <input type='hidden' name='userId' value='${objJson[0].userId}' />
+     <button type="submit">Add to Collection</button>
+   </form>
+   <form action='/add-wishlist' method="POST">
+   <input type="hidden" name="multiverseid" value='${objJson[0].cards[i].multiverseid}' />
+    <input type='hidden' name='userId' value='${objJson[0].userId}' />
+     <button type="submit">Add to Wish List</button>
+   </form></li><br>`
   }
   page_span.innerHTML = page;
 

@@ -1,11 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
- const Collection = sequelize.define('Collection', {
+ const Wishlist = sequelize.define('Wishlist', {
    multiverseid: DataTypes.INTEGER,
    userId: DataTypes.INTEGER
  }, {});
- Collection.associate = function(models) {
+ Wishlist.associate = function(models) {
    // associations can be defined here
  };
- return Collection;
+ return Wishlist;
 };

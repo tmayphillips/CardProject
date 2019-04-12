@@ -8,6 +8,7 @@ const mtg = require('mtgsdk')
 const sequelize = require('sequelize')
 const session = require('express-session')
 const bcrypt = require('bcrypt')
+let currentUser = {}
 
 app.use(session( {
   secret: 'keyboard cat',
@@ -72,7 +73,7 @@ app.post('/login', (req,res) => {
   })
   .then(function(user) {
     if (user == null) {
-      console.log("user does not fucking exist")
+      console.log("user does not exist")
       res.redirect('/login')
     }
     else {
@@ -81,6 +82,7 @@ app.post('/login', (req,res) => {
           if(req.session) {
             req.session.username = user.dataValues
           }
+
           res.render('profile', {user: user})
       }
     })
@@ -168,8 +170,16 @@ app.get('/register',(req,res) => {
 })
 
 app.get('/search-cards',(req,res) => {
-  res.render('search-cards')
+    console.log(req.session)
+    models.Users.findOne({
+        where: {
+            username: req.session.username.username,
+        }
+    }).then(user => {
+    res.render('search-cards', {user: user})
+    })
 })
+
 app.get('/view-card/', (req,res,next) => {
   let searchTerm = req.query.search
 
@@ -177,11 +187,104 @@ app.get('/view-card/', (req,res,next) => {
     name: `${searchTerm}`
   })
   .then(cards => {
-    res.status(200).json({'cards': cards})
+    res.status(200).json({'cards': cards, 'userId': req.session.username.id})
   }).catch(err => next(err))
 })
 
+//***********ADD CARD TO COLLECTION***********//
+app.post('/add-collection',(req,res) => {
+    //Get the input variables from the search page
+    let multiverseid = req.body.multiverseid
+    let userId = req.body.userId
+    //create variable that holds an object made of multiverseid and userId, in format of Collection class
+    let collection = models.Collection.build({
+        multiverseid: multiverseid,
+        userId: userId
+      })
+    //save the new variable to the collection table
+    collection.save().then((savedCard) => {
+      console.log(savedCard)
+    })
+    .then(() => {
+      //success message
+      console.log("Ay pretty good")
+    }).catch(error => console.log(error))
+})
 
+//***********DISPLAY CARDS IN USER'S COLLECTION***********//
+
+app.get('/view-collection',(req,res) => {
+  let promises = []
+  models.Collection.findAll({
+    where: {
+      userId: req.session.username.id
+    }
+  }).then(cardCollection => {
+    cardCollection.forEach((col) => {
+      let promise = mtg.card.where({
+        multiverseid: col.dataValues.multiverseid
+      })
+      promises.push(promise)
+    })
+    Promise.all(promises)
+    .then(result => {
+    res.status(200).json({'cards': result, 'userId': req.session.username.id})
+})
+})
+})
+
+app.get('/view-wishlist',(req,res) => {
+  let promises = []
+  models.Wishlist.findAll({
+    where: {
+      userId: req.session.username.id
+    }
+  }).then(cardWishlist => {
+    cardWishlist.forEach((col) => {
+      let promise = mtg.card.where({
+        multiverseid: col.dataValues.multiverseid
+      })
+      promises.push(promise)
+    })
+    Promise.all(promises)
+    .then(result => {
+    res.status(200).json({'cards': result, 'userId': req.session.username.id})
+})
+})
+})
+
+
+//***********VIEW SEARCH RESULTS***********//
+app.post('/view-card-name',(req,res) => {
+    //Search by card name
+    let cardName = req.body.cardName
+    //Use mtg's api interface to match cardName to database
+    mtg.card.where({ name: `${cardName}`})
+    //create promise holding 'cards', whose value is what was returned by mtg.card.where
+    .then(cards => {
+      //render view-card page with cards in 'cards', and the session user id in userid
+      res.render('view-card',{cards: cards, userid: req.session.username.id})
+    })
+})
+
+app.post('/view-card-advanced',(req,res) => {
+  //Search by card name
+  let cardName = req.body.cardName
+  let cardColor = req.body.cardColor
+  let cardSupertype = req.body.cardSupertype
+  let cardCMC = req.body.cardCMC
+  let cardRarity = req.body.cardRarity
+  let cardArtist = req.body.cardArtist
+  let cardId = req.body.cardId
+  let cardSubtype = req.body.Subtype
+  //Use mtg's api interface to match cardName to database
+  mtg.card.where({ name: `${cardName}`, supertypes: `${cardSupertype}`, colors: `${cardColor}`, cmc: `${cardCMC}`, rarity: `${cardRarity}`, artist: `${cardArtist}`, multiverseid: `${cardId}`})
+  //create promise holding 'cards', whose value is what was returned by mtg.card.where
+  .then(cards => {
+    //render view-card page with cards in 'cards', and the session user id in userid
+    res.render('view-card',{cards: cards, userid: req.session.username.id})
+  })
+})
 
 app.listen(3000,function(){
     console.log("server running")
