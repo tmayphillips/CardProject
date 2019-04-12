@@ -11,7 +11,7 @@
 
     <title>Mint Condition</title>
   </head>
-  <body>
+  <body id="background">
     <div id='main'>
     <h1 id='header'>Mint Condition</h1>
 
@@ -35,15 +35,13 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="login">Log In</a>
-              <a class="dropdown-item" href="/">Log Out</a>
-              <a class="dropdown-item" href="register">Register</a>
-              <a class="dropdown-item" href="profile">View Profile</a>
+              <a class="dropdown-item" href="register">Register</a>    
             </div>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="button" my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
     </nav>
@@ -51,35 +49,35 @@
 
 <h2>Register</h2>
 <!-- register -->
-<form action='/add-user' method='POST'>
+<form id='registration' action='/add-user' method='POST'>
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">User Name</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name='userName' id="inputEmail3" placeholder="User Name">
+      <input type="text" class="form-control" name='userName' id="inputEmail3">
     </div>
   </div>
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Location</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name='location' id="inputEmail3" placeholder="Location">
+      <input type="text" class="form-control" name='location' id="inputEmail3">
     </div>
   </div>
     <div class="form-group row">
     <label class="col-sm-2 col-form-label">Favorite Deck</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name='faveDeck' id="inputEmail3" placeholder="Favorite Deck">
+      <input type="text" class="form-control" name='faveDeck' id="inputEmail3">
     </div>
   </div>
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Play Style</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name='playStyle' id="inputEmail3" placeholder="Play Style">
+      <input type="text" class="form-control" name='playStyle' id="inputEmail3">
     </div>
   </div>
       <div class="form-group row">
     <label class="col-sm-2 col-form-label">How long have you been playing?</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name='playTime' id="inputEmail3" placeholder="Length of time">
+      <input type="text" class="form-control" name='playTime' id="inputEmail3">
     </div>
   </div>
     <div class="form-group row">
@@ -96,23 +94,23 @@
   </div>
   <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name='avatar' id="inlineCheckbox1" value="avacyn.png">
-  <label class="form-check-label" for="inlineCheckbox1"><img src='avacyn.png'/></label>
+  <label class="form-check-label" for="inlineCheckbox1"><img class='avatar-selection' src='avacyn.png'/></label>
 </div>
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name='avatar' id="inlineCheckbox2" value="black lotus.png">
-  <label class="form-check-label" for="inlineCheckbox2"><img src='black lotus.png'/></label>
+  <label class="form-check-label" for="inlineCheckbox2"><img class='avatar-selection' src='black lotus.png'/></label>
 </div>
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name='avatar' id="inlineCheckbox3" value="Squee.png">
-  <label class="form-check-label" for="inlineCheckbox3"><img src='Squee.png'/></label>
+  <label class="form-check-label" for="inlineCheckbox3"><img class='avatar-selection' src='Squee.png'/></label>
 </div>
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name='avatar' id="inlineCheckbox4" value="dude.png">
-  <label class="form-check-label" for="inlineCheckbox4"><img src='dude.png'/></label>
+  <label class="form-check-label" for="inlineCheckbox4"><img class='avatar-selection' src='dude.png'/></label>
 </div>
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name='avatar' id="inlineCheckbox5" value="jace.png">
-  <label class="form-check-label" for="inlineCheckbox5"><img src='jace.png'/></label>
+  <label class="form-check-label" for="inlineCheckbox5"><img class='avatar-selection' src='jace.png'/></label>
 </div>
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>

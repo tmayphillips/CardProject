@@ -11,7 +11,7 @@
 
     <title>Mint Condition</title>
   </head>
-  <body>
+  <body id='background'>
     <div id='main'>
     <h1 id='header'>Mint Condition</h1>
 
@@ -34,16 +34,14 @@
               My Account
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="login">Log In</a>
               <a class="dropdown-item" href="/">Log Out</a>
-              <a class="dropdown-item" href="register">Register</a>
               <a class="dropdown-item" href="profile">View Profile</a>
             </div>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="button" my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
     </nav>
@@ -56,19 +54,19 @@
 
 <div id='pic-info'>
 <div id='profile-pic'>
-<img id='profile-page-img' src='/{{profileimg}}'/>
+<img class='profile-page-img' src='/{{profileimg}}'/>
 </div>
 <div id='user-info'>
-<h6>Location</h6>
-<p>{{location}}</p>
-<h6>Favorite Deck</h6>
-<p>{{favedeck}}</p>
-<h6>Play Style</h6>
-<p>{{playstyle}}</p>
-<h6>Play Time</h6>
-<p>{{playtime}}</p>
-<h6>Total Cards</h6>
-<p>{{numberofcards}}</p>
+<div class='profile-stuff'><div class='bullet-buttons'><img class='bullet' src='blue-button.png'/><h4>Location</h4></div>
+<p>{{location}}</p></div>
+<div class='profile-stuff'><div class='bullet-buttons'><img class='bullet' src='green-button.png'/><h4>Favorite Deck</h4></div>
+<p>{{favedeck}}</p></div>
+<div class='profile-stuff'><div class='bullet-buttons'><img class='bullet' src='white-button.png'/><h4>Play Style</h4></div>
+<p>{{playstyle}}</p></div>
+<div class='profile-stuff'><div class='bullet-buttons'><img class='bullet' src='red-button.png'/><h4>Play Time</h4></div>
+<p>{{playtime}}</p></div>
+<div class='profile-stuff'><div class='bullet-buttons'><img class='bullet' src='black-button.png'/><h4>Total Cards</h4></div>
+<p>{{numberofcards}}</p></div>
 <form action='/edit-profile' method='POST'><button type='submit'>Edit Profile</button></form>
 </div>
 </div>
