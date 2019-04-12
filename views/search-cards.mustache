@@ -26,7 +26,7 @@
             <a class="nav-link" href="collection">Collection<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="wish-list">Wish List</a>
+            <a class="nav-link" href="wishlist">Wish List</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,9 +51,17 @@
     <input id="searchTextArea" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     <button id="searchButton" class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
   </form>
-      <!-- <textarea id="searchTextArea"></textarea>
-      <button id="searchButton" type="button">Search</button> -->
 
+  <form action='/view-card-advanced' method="POST">
+      <textarea name="cardName" placeholder="Card Name, e.g. 'Squee'"></textarea>
+      <textarea name="cardColor" placeholder="Card color: Red, Blue, Black, Green, White, Colorless"></textarea>
+      <textarea name="cardSupertype" placeholder="Supertype"></textarea>
+      <textarea name="cardCMC" placeholder="Total manacost (Must be number)"></textarea>
+      <textarea name="cardRarity" placeholder="Rarity (Common, Uncommon, Rare, Mythic Rare, Special, Basic Land)"></textarea>
+      <textarea name="cardArtist" placeholder="Artist"></textarea>
+      <textarea name="cardId" placeholder="Multiverse ID"></textarea>
+      <button type="submit">Search</button>
+    </form>
 
       <div id="listingTable">
         <ul>
