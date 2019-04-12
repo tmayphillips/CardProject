@@ -151,13 +151,13 @@ app.get('/collection',(req,res) => {
   })
 })
 //route to view wish list
-app.get('/wish-list',(req,res) => {
+app.get('/wishlist',(req,res) => {
   models.Users.findOne({
     where: {
       username: req.session.username.username
     }
   }).then(function(user) {
-    res.render('wish-list', {user: user})
+    res.render('wishlist', {user: user})
   })
 })
 // route to profile page populated with the current session data
