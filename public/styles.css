@@ -1,0 +1,241 @@
+/* all pages */
+#background {
+  background-image: url('higher-res-background.png')
+}
+#main {
+  font-family: 'MagicMedieval', 'Luminari', cursive;
+  color: black;
+  text-decoration: black;
+  display: flex;
+  flex-direction: column;
+}
+
+#header {
+  text-align: center;
+  margin-top: 5px;
+}
+/* end of all pages */
+
+#updateBtn {
+  margin-top: 10px;
+}
+
+/* nav bar */
+.nav-style {
+  background-color: #7a98a6;
+  color: black;
+}
+
+.navbar {
+  margin: 0 15 0 15;
+  border: black solid 1px;
+}
+
+.button {
+  color:black;
+}
+
+h2 {
+  text-align: center;
+}
+
+.custom-file {
+  margin: 25 15 0 15;
+}
+
+/* profile page css*/
+.bullet {
+  height: 20px;
+  width: 20px;
+  margin: 0 10 0 0;
+}
+.bullet-buttons {
+  display: flex;
+}
+.profile-stuff {
+  display: flex;
+  flex-direction: column;
+}
+#full-profile {
+  /* border: 4px solid #4a4c7d; */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 2em;
+}
+#user-info {
+  display: flex;
+  flex-direction: column;
+}
+#pic-info {
+  display: flex;
+  justify-content: center;
+}
+#profile-page-img {
+  height: 350px;
+  width: 350px;
+}
+/* end of profile page css */
+
+/* magic card profile pane */
+#fixed-postition {
+  position: fixed;
+}
+
+#profile-frame-img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+
+}
+#card-frame {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 550px;
+  width: 350px;
+
+}
+#user-name {
+  position: absolute;
+  top: 7px;
+}
+#profile-img {
+  height: 241px;
+  width: 292px;
+  position: absolute;
+  top: 65px;
+  left: 30px;
+}
+#user-name-frame {
+  display: flex;
+  position: absolute;
+  height: 30px;
+  width: 293px;
+  justify-content: center;
+  left: 29px;
+  top: 30px;
+}
+#play-style-frame {
+  display: flex;
+  position: absolute;
+  height: 30px;
+  width: 293px;
+  justify-content: center;
+  left: 30px;
+  top: 308px;
+}
+#play-style {
+  display: flex;
+  position: absolute;
+  top: 7px;
+}
+#profile-info {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 345px;
+  left: 35px;
+  height: 153px;
+  width: 293px;
+}
+#total-cards {
+  text-align: right;
+  position: absolute;
+  top: 505px;
+  left: 175px;
+  height: 20px;
+  width: 150px;
+}
+/* end of magic card profile pane */
+
+/* registration page */
+#registration {
+  margin: 0 10% 0 10%;
+  padding: 15px;
+}
+.avatar-selection {
+  height: 200px;
+  width: 200px;
+}
+.row {
+  margin-top: 10px;
+}
+/* login page */
+#login {
+  border: black solid 8px;
+  border-radius: 20px;
+  margin: 0 25% 0 25%;
+  padding: 15px;
+  box-shadow: 10px 15px;
+}
+/* collection/wishlist page */
+
+#page-setup {
+  display: flex;
+}
+#fixed-postition {
+  position: fixed;
+}
+
+#wishlistTable {
+  display: flex;
+  flex-wrap: wrap;
+}
+#collectionTable {
+  display: flex;
+  flex-wrap: wrap;
+}
+#wishlist-view {
+  display: flex;
+  flex-direction: column;
+  margin-left: 400px;
+}
+#collection-view {
+  display: flex;
+  flex-direction: column;
+  margin-left: 400px;
+}
+/* index search */
+
+.card-display {
+  margin: 10px;
+}
+
+.card-size {
+  height: 307px;
+  width: 221px;
+}
+li {
+  list-style: none;
+}
+
+#listingTable {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#prev-next {
+  display: flex;
+  justify-content: center;
+}
+
+#btn_prev {
+  margin-right: 10%;
+}
+
+#btn_next {
+  margin-left: 10%
+}
+
+/* advanced results */
+#search-results {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.as-results {
+  display: flex;
+}
