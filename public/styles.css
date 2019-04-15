@@ -259,3 +259,17 @@ li {
 #advancedSearchButton {
   margin-top: 10px;
 }
+
+#home-page {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  position: relative;
+}
+#caption {
+  position: absolute;
+}
+
+#crackin {
+  font-size: 45px;
+}
