@@ -1,0 +1,45 @@
+{
+  "name": "cards",
+  "version": "1.0.0",
+  "description": "Empty",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "emitter20": "^1.0.1",
+    "express": "^4.16.4",
+    "express-mustache": "^1.0.4",
+    "express-paginate": "^1.0.0",
+    "express-session": "^1.16.1",
+    "express-static": "^1.2.6",
+    "faker": "^4.1.0",
+    "mongoose": "^5.5.1",
+    "mtgsdk": "^0.4.2",
+    "mustache-express": "^1.2.8",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.5",
+    "orm": "^5.0.4",
+    "pg": "^7.9.0",
+    "request": "^2.88.0",
+    "sequelize": "^5.4.0",
+    "sequelize-paginate": "^1.1.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmayphillips/CardProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tmayphillips/CardProject/issues"
+  },
+  "homepage": "https://github.com/tmayphillips/CardProject#readme"
+}

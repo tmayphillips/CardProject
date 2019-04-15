@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel='stylesheet' href='styles.css'></link>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <title>Mint Condition</title>
+  </head>
+   <body id='background'>
+    <div id='main'>
+    <h1 id='header'>Mint Condition</h1>
+
+    <!-- nav bar bootstrap -->
+    <nav class="nav-style navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="/">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="collection">Collection<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="wishlist">Wish List</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              My Account
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <form action="/logout" method="GET">
+                <button class="dropdown-item" type="submit">Log Out</button>
+              </form>
+              <a class="dropdown-item" href="profile">View Profile</a>
+            </div>
+          </li>
+        </ul>
+        <a class="nav-link" href="search-cards">Advanced Search<span class="sr-only">(current)</span></a>
+      </div>
+    </nav>
+<!-- end of navbar -->
+
+<!-- profile pane -->
+{{#user}}
+<div id='full-profile'>
+<h2>{{username}}</h2>
+<div id='pic-info'>
+<div id='profile-pic'>
+<img id='profile-page-img' src='{{profileimg}}'/>
+</div>
+<div id='user-info'>
+<h6>Location</h6>
+<form action='/update-profile' method='POST'>
+<input type='text' name='location' value='{{location}}'/>
+<h6>Favorite Deck</h6>
+<input type='text' name='faveDeck' value='{{favedeck}}'/>
+<h6>Play Style</h6>
+<input type='text' name='playStyle' value='{{playstyle}}'/>
+<h6>Play Time</h6>
+<input type='text' name='playTime' value='{{playtime}}'/>
+<div>
+<button id="updateBtn" type='submit'>Update</button>
+</div>
+<!-- <h6>Total Cards</h6>
+<input type='text' name='totalCards' value='{{totalcards}}'/> -->
+</div>
+</div>
+<div id='about-me'>
+<!--<input type='text' name='about-me' value='{{aboutme}}'/>-->
+</form>
+{{/user}}
+</div>
+</div>
+<!-- end of profile pane -->
+
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
